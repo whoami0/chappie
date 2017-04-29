@@ -53,14 +53,17 @@ $ NODE_ENV=production node app
 ![Схема підключення](https://bytebucket.org/Rainbow-MRX/off-robot/raw/77597cc638fb3b88a39a59cf9581fa18817b0bb5/fritzing-tpl/off-robot.png)
 ***
 **Задній двигун**:
+
   - Out1
   - Out2
 
 **Передній двигун**:
+
   - Out3
   - Out4
 ***
 **L293D:**
+
  - Input 1 -> *GPIO16* -> (D0)
  - Input 2 -> *GPIO4* -> (D2)
  - Enable 1 -> *GPIO5* -> (D1)
@@ -69,6 +72,7 @@ $ NODE_ENV=production node app
  - Enable 2 -> *GPIO0* -> (D3)
 ***
 **HC-SR04**:
+
  - Trig Left -> *GPIO12* -> (D6)
  - Echo Left -> *GPIO13* -> (D7)
  - Trig Center -> *GPIO15* -> (D8)
@@ -77,6 +81,7 @@ $ NODE_ENV=production node app
  - Echo Right -> *GPIO10* -> (SD3)
 
 Елементи використані у схемі:
+
    1. **NodeMCU 1.0 ESP-12E** - 1 шт.
    2. **DC Motor** - 2 шт.
    3. **L293D** - 1 шт.
@@ -85,6 +90,7 @@ $ NODE_ENV=production node app
    6. **Батарея 9В** - 1 шт.
    7. **Резистор 120Ом** - 2 шт.
    8. **Резистор 360Ом** - 2 шт.
+   
 #### Building for source
 For production release:
 ```sh
