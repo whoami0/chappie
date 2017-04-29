@@ -20,22 +20,6 @@
 * [Fritzing](http://fritzing.org/home/) - програмне забезпечення з відкритим кодом для віртуального моделювання електричних кіл і схем та електронного обладнання
 * [NodeMCU](https://github.com/nodemcu/nodemcu-firmware) - відкрита [IoT](https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82_%D0%B2%D0%B5%D1%89%D0%B5%D0%B9) платформа 
 
-### Перший запуск
-
-Перед першим запуском потрібно відкрити файл **off-robot.ino** та відредагувати наступні стрічки:
-
-```c
-const char* ssid = "YOUR_SSID";
-const char* password = "YOUR_PASSWD";
-```
-Після чого зберегти файл і прошити плату NodeMCU.
-
-```sh
-$ npm install --production
-$ npm run predeploy
-$ NODE_ENV=production node app
-```
-
 ### Бібліотеки
 
 Додаткові та власні бібліотеки, які використані для розробки проекту.
@@ -90,7 +74,17 @@ $ NODE_ENV=production node app
    6. **Батарея 9В** - 1 шт.
    7. **Резистор 120Ом** - 2 шт.
    8. **Резистор 360Ом** - 2 шт.
-   
+
+### Перший запуск
+
+Перед першим запуском потрібно відкрити файл **off-robot.ino** та відредагувати наступні стрічки:
+
+```c
+const char* ssid = "YOUR_SSID";
+const char* password = "YOUR_PASSWD";
+```
+Після чого зберегти файл і прошити плату NodeMCU.
+
 #### Building for source
 For production release:
 ```sh
