@@ -54,7 +54,7 @@ $ NODE_ENV=production node app
 
 ### Схема підключення
 
-![Схема підключення](https://bitbucket.org/Rainbow-MRX/off-robot/src/fa082f96593e0aa96888746ae1bd6239197fcdb0/fritzing-tpl/off-robot.png?at=master)
+![Схема підключення](https://bytebucket.org/Rainbow-MRX/off-robot/raw/77597cc638fb3b88a39a59cf9581fa18817b0bb5/fritzing-tpl/off-robot.png)
 
 First Tab:
 ```sh
