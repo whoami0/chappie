@@ -20,19 +20,15 @@
 * [Fritzing](http://fritzing.org/home/) - програмне забезпечення з відкритим кодом для віртуального моделювання електричних кіл і схем та електронного обладнання
 * [NodeMCU](https://github.com/nodemcu/nodemcu-firmware) - відкрита [IoT](https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82_%D0%B2%D0%B5%D1%89%D0%B5%D0%B9) платформа 
 
-### Installation
+### Перший запуск
 
-Dillinger requires [Node.js](https://nodejs.org/) v4+ to run.
+Перед першим запуском потрібно відкрити файл **off-robot.ino** та відредагувати наступні стрічки:
 
-Install the dependencies and devDependencies and start the server.
-
-```sh
-$ cd dillinger
-$ npm install -d
-$ node app
+```c
+const char* ssid = "YOUR_SSID";
+const char* password = "YOUR_PASSWD";
 ```
-
-For production environments...
+Після чого зберегти файл і прошити плату NodeMCU.
 
 ```sh
 $ npm install --production
@@ -55,21 +51,40 @@ $ NODE_ENV=production node app
 ### Схема підключення
 
 ![Схема підключення](https://bytebucket.org/Rainbow-MRX/off-robot/raw/77597cc638fb3b88a39a59cf9581fa18817b0bb5/fritzing-tpl/off-robot.png)
+***
+**Задній двигун**:
+  - Out1
+  - Out2
 
-First Tab:
-```sh
-$ node app
-```
+**Передній двигун**:
+  - Out3
+  - Out4
+***
+**L293D:**
+ - Input 1 -> *GPIO16* -> (D0)
+ - Input 2 -> *GPIO4* -> (D2)
+ - Enable 1 -> *GPIO5* -> (D1)
+ - Input 3 -> *GPIO2* -> (D4)
+ - Input 4 -> *GPIO14* -> (D5)
+ - Enable 2 -> *GPIO0* -> (D3)
+***
+**HC-SR04**:
+ - Trig Left -> *GPIO12* -> (D6)
+ - Echo Left -> *GPIO13* -> (D7)
+ - Trig Center -> *GPIO15* -> (D8)
+ - Echo Center -> *GPIO3* -> (RX)
+ - Trig Right -> *GPIO9* -> (SD2)
+ - Echo Right -> *GPIO10* -> (SD3)
 
-Second Tab:
-```sh
-$ gulp watch
-```
-
-(optional) Third:
-```sh
-$ karma test
-```
+Елементи використані у схемі:
+   1. **NodeMCU 1.0 ESP-12E** - 1 шт.
+   2. **DC Motor** - 2 шт.
+   3. **L293D** - 1 шт.
+   4. **LM317** - 2 шт.
+   5. **HC-SR04** - 3 шт.
+   6. **Батарея 9В** - 1 шт.
+   7. **Резистор 120Ом** - 2 шт.
+   8. **Резистор 360Ом** - 2 шт.
 #### Building for source
 For production release:
 ```sh
