@@ -2,42 +2,23 @@
 
 [![NodeMCU](http://visystem.ddns.net:7442/imagenes/nodemcu-logos.png)](https://nodesource.com/products/nsolid)
 
-Мікроконтролерна система управління двигунами автономного робота на базі мікроконтролера [ESP8266](https://ru.wikipedia.org/wiki/ESP8266)
+Мікроконтролерна система управління двигунами автономного робота на базі платформи NodeMCU 1.0 ESP-12E основою якої є мікроконтролер [ESP8266](https://ru.wikipedia.org/wiki/ESP8266)
 
 ### Можливості
 
-  - Об'їзд перешкод в автономному режимі
-  - Керування роботом через веб-інтерфейс
+  - Об'їзд перешкод в автономному режимі;
+  - Керування роботом через веб-інтерфейс по Wi-Fi.
 
 
-Markdown is a lightweight markup language based on the formatting conventions that people naturally use in email.  As [John Gruber] writes on the [Markdown site][df1]
+Проект розроблений в межах курсової роботи з комп'ютерних систем, автором якої є [Лящинський Петро](https://www.linkedin.com/in/rainbowmrx/), ст. гр. КСМ-32
 
-> The overriding design goal for Markdown's
-> formatting syntax is to make it as readable
-> as possible. The idea is that a
-> Markdown-formatted document should be
-> publishable as-is, as plain text, without
-> looking like it's been marked up with tags
-> or formatting instructions.
+### Технології
 
-This text you see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.
+Для розробки Off-line Robot було використано наступні open-source проекти:
 
-### Tech
-
-Dillinger uses a number of open source projects to work properly:
-
-* [AngularJS] - HTML enhanced for web apps!
-* [Ace Editor] - awesome web-based text editor
-* [markdown-it] - Markdown parser done right. Fast and easy to extend.
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [node.js] - evented I/O for the backend
-* [Express] - fast node.js network app framework [@tjholowaychuk]
-* [Gulp] - the streaming build system
-* [Breakdance](http://breakdance.io) - HTML to Markdown converter
-* [jQuery] - duh
-
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
+* [Arduino IDE](https://www.arduino.cc/) - середовище розробки програм для Arduino і не тільки, на мові програмування, що є підмножиною [C/C++](https://uk.wikipedia.org/wiki/C%2B%2B)
+* [Fritzing](http://fritzing.org/home/) - програмне забезпечення з відкритим кодом для віртуального моделювання електричних кіл і схем та електронного обладнання
+* [NodeMCU](https://github.com/nodemcu/nodemcu-firmware) - відкрита [IoT](https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82_%D0%B2%D0%B5%D1%89%D0%B5%D0%B9) платформа 
 
 ### Installation
 
@@ -59,28 +40,21 @@ $ npm run predeploy
 $ NODE_ENV=production node app
 ```
 
-### Plugins
+### Бібліотеки
 
-Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
+Додаткові та власні бібліотеки, які використані для розробки проекту.
 
-| Plugin | README |
+| Lib | README |
 | ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md] [PlDb] |
-| Github | [plugins/github/README.md] [PlGh] |
-| Google Drive | [plugins/googledrive/README.md] [PlGd] |
-| OneDrive | [plugins/onedrive/README.md] [PlOd] |
-| Medium | [plugins/medium/README.md] [PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md] [PlGa] |
+| Ultrasonic-HC-SR04 | [JRodrigoTech/Ultrasonic-HC-SR04](https://github.com/JRodrigoTech/Ultrasonic-HC-SR04) |
+| Motor | [libs/motor/README.md] [PlGd] |
+| Roboton | [plugins/googledrive/README.md] [PlGd] |
 
 
-### Development
 
-Want to contribute? Great!
+### Схема підключення
 
-Dillinger uses Gulp + Webpack for fast developing.
-Make a change in your file and instantanously see your updates!
-
-Open your favorite Terminal and run these commands.
+![Схема підключення](https://bitbucket.org/Rainbow-MRX/off-robot/src/fritzing-tpl/off-robot_МП.png)
 
 First Tab:
 ```sh
