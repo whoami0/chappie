@@ -1,8 +1,8 @@
 # Offline Robot
 
-[![NodeMCU](http://visystem.ddns.net:7442/imagenes/nodemcu-logos.png)](https://nodesource.com/products/nsolid)
+[![NodeMCU](http://docs.thinger.io/arduino/assets/nodemcu.png)](https://nodesource.com/products/nsolid)
 
-Мікроконтролерна система управління двигунами автономного робота на базі платформи NodeMCU 1.0 ESP-12E основою якої є мікроконтролер [ESP8266](https://ru.wikipedia.org/wiki/ESP8266)
+Мікроконтролерна система управління двигунами автономного робота на базі платформи NodeMCU 1.0 ESP-12E основою якої є мікроконтролер [ESP8266](https://ru.wikipedia.org/wiki/ESP8266).
 
 ## Можливості
 
@@ -10,7 +10,7 @@
   - Керування роботом через веб-інтерфейс по Wi-Fi.
 
 
-Проект розроблений в межах курсової роботи з комп'ютерних систем, автором якої є [Лящинський Петро](https://www.linkedin.com/in/rainbowmrx/), ст. гр. КСМ-32
+Проект розроблений в межах курсової роботи з комп'ютерних систем, автором якої є [Лящинський Петро](https://www.linkedin.com/in/rainbowmrx/), ст. гр. КСМ-32.
 
 ## Технології
 
@@ -28,18 +28,19 @@
 | ------ | ------ |
 | Ultrasonic-HC-SR04 | [JRodrigoTech/Ultrasonic-HC-SR04](https://github.com/JRodrigoTech/Ultrasonic-HC-SR04) |
 | Roboton | [libs/Roboton] [Roboton] |
-| TickerScheduler | [libs/TickerScheduler] [Ticker] |
+| TickerScheduler | [Toshik/TickerScheduler] [Ticker] |
 
 > Бібліотеки потрібно встановлювати у папку
-> %UserDocuments%/Arduino/libraries
-> Детальніше про встановлення бібліотек можна прочитати [тут](http://arduino.ua/ru/guide/Libraries).
+> **%UserDocuments%/Arduino/libraries**
+> Детальніше про встановлення бібліотек можна прочитати **[тут](http://arduino.ua/ru/guide/Libraries)**.
 
-З допомогою **Windows CMD** (Win+R ---> cmd ) це можна зробити наступним чином:
-```sh
+З допомогою **Windows CMD** (Win+R ---> cmd ---> Enter ) це можна зробити наступним чином:
+```cmd
 $ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
 ```
 
-##Використані елементи
+## Використані елементи
+
 
 | Елемент | Кількість |
 | ------ | ------ |
@@ -91,10 +92,10 @@ $ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
 Перед першим запуском потрібно відкрити файл **off-robot.ino** та відредагувати наступні стрічки:
 
 ```c
-const char* ssid = "YOUR_SSID";
-const char* password = "YOUR_PASSWD";
+const char* ssid = "YOUR_SSID"; //Назва Wi-Fi
+const char* password = "YOUR_PASSWD"; // Пароль
 ```
-Після чого зберегти файл і прошити плату NodeMCU.
+Після чого зберегти файл і прошити плату NodeMCU. Як це зробити написано **[тут](http://www.instructables.com/id/Programming-ESP8266-ESP-12E-NodeMCU-Using-Arduino-/)**.
 
 #### Building for source
 For production release:
