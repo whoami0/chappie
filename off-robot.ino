@@ -1,6 +1,6 @@
 #include <Roboton.h>
 #include <Ultrasonic.h>
-#include <TickerScheduler.h>
+#include <Ticker.h>
 
 #define DISTANCE_RANGE 30
 #define SIZE_BUFF_D 3
@@ -16,17 +16,19 @@ Roboton robot(&MOTOR_FRWB, &MOTOR_RGHL);
 uint8_t distance[SIZE_BUFF_D];
 uint16_t prevMillis = 0;
 uint16_t currentMillis = 0;
-TickerScheduler tasks(1);
-
+Ticker tc_d;
+Ticker tc_c;
+Ticker tc_l;
+Ticker tc_r;
 
 void setup() {
-    tasks.add(0, 300, getDistance);
-    tasks.add(1, 330, checkCenter);
-    tasks.add(2, 340, checkLeft);
-    tasks.add(3, 350, checkRight);
+    tc_d.attach_ms(15, getDistance);
+    tc_c.attach_ms(27, checkCenter);
+    tc_r.attach_ms(34, checkRight);
+    tc_l.attach_ms(41, checkLeft);
 }
 void loop() {
-    tasks.update();
+    
 }
 void getDistance() {
     distance[0] = leftHC.Ranging(CM);
