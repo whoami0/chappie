@@ -1,80 +1,155 @@
-# TickerScheduler
-Simple scheduler for ESP8266 Arduino based on Ticker
+# Offline Robot
 
-###Initialization###
+[![NodeMCU](http://docs.thinger.io/arduino/assets/nodemcu.png)](https://nodesource.com/products/nsolid)
 
-```TickerScheduler(uint size); ```
+Мікроконтролерна система управління двигунами автономного робота на базі платформи NodeMCU 1.0 ESP-12E основою якої є мікроконтролер [ESP8266](https://ru.wikipedia.org/wiki/ESP8266).
 
-| Param | Description | 
-| --- | --- |
-|  size  |  Amount of task Tickers to initialize  |
+## Можливості
 
-**Example**: 
-
-```TickerScheduler ts(5)```
+  - Об'їзд перешкод в автономному режимі;
+  - Керування роботом через веб-інтерфейс по Wi-Fi.
 
 
-###Add task###
+Проект розроблений в межах курсової роботи з комп'ютерних систем, автором якої є [Лящинський Петро](https://www.linkedin.com/in/rainbowmrx/), ст. гр. КСМ-32.
 
-```    boolean add(uint i, uint32_t period, tscallback_t f, boolean shouldFireNow = false); ```
+## Технології
 
-| Param | Description | 
-| --- | --- |
-|  i  |  Task ID  |
-| period  | Task execution period in ms  |
-| f | Task callback |
-| shouldFireNow|  ```true``` if you want to execute task right after first scheduler update or wait next scheduled start |
+Для розробки Offline Robot було використано наступні open-source проекти:
 
-**Returns**:
+* [Arduino IDE](https://www.arduino.cc/) - середовище розробки програм для Arduino і не тільки, на мові програмування, що є підмножиною [C/C++](https://uk.wikipedia.org/wiki/C%2B%2B)
+* [Fritzing](http://fritzing.org/home/) - програмне забезпечення з відкритим кодом для віртуального моделювання електричних кіл і схем та електронного обладнання
+* [NodeMCU](https://github.com/nodemcu/nodemcu-firmware) - відкрита [IoT](https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82_%D0%B2%D0%B5%D1%89%D0%B5%D0%B9) платформа 
 
-```true``` - task added sucessfully
+## Бібліотеки
 
-```false``` - task was not added 
+Додаткові та власні бібліотеки, які використані для розробки проекту.
 
-**Example**:
+| LIBRARY | LINK |
+| ------ | ------ |
+| Ultrasonic-HC-SR04 | [JRodrigoTech/Ultrasonic-HC-SR04](https://github.com/JRodrigoTech/Ultrasonic-HC-SR04) |
+| Roboton | [libs/Roboton] [Roboton] |
+| TickerScheduler | [Toshik/TickerScheduler] [Ticker] |
 
-```ts.add(0, 3000, sendData)```
+> Бібліотеки потрібно встановлювати у папку
+> **%UserDocuments%/Arduino/libraries**
+> Детальніше про встановлення бібліотек можна прочитати **[тут](http://arduino.ua/ru/guide/Libraries)**.
 
-###Execute scheduler in ```loop()```###
+З допомогою **Windows CMD** (Win+R ---> cmd ---> Enter ) це можна зробити наступним чином:
+```cmd
+$ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
+```
 
-``` ts.update() ```
+## Використані елементи
 
-###Remove task###
 
-```boolean remove(uint i)```
+| Елемент | Кількість |
+| ------ | ------ |
+| NodeMCU 1.0 ESP-12E | 1 |
+| DC Motor | 2 | 
+| L293D | 1 |
+| LM317 | 2 |
+| HC-SR04 | 3 |
+| Батарея 9В | 1 |
+| Резистор 120 Ом | 2 |
+| Резистор 360 Ом | 2 |
 
-**Returns**:
 
-```true``` - task removed sucessfully
+## Схема підключення
 
-```false``` - task was not removed
+![Схема підключення](https://bytebucket.org/Rainbow-MRX/off-robot/raw/77597cc638fb3b88a39a59cf9581fa18817b0bb5/fritzing-tpl/off-robot.png)
+***
+**Задній двигун**:
 
-| Param | Description | 
-| --- | --- |
-|  i  |  Task ID  |
+  - Out1
+  - Out2
 
-###Enable/Disable task###
+**Передній двигун**:
 
-```boolean enable(uint i)```
+  - Out3
+  - Out4
+***
+**L293D:**
 
-```boolean disable(uint i)```
+ - Input 1 -> *GPIO16* -> (D0)
+ - Input 2 -> *GPIO4* -> (D2)
+ - Enable 1 -> *GPIO5* -> (D1)
+ - Input 3 -> *GPIO2* -> (D4)
+ - Input 4 -> *GPIO14* -> (D5)
+ - Enable 2 -> *GPIO0* -> (D3)
+***
+**HC-SR04**:
 
-**Returns**:
+ - Trig Left -> *GPIO12* -> (D6)
+ - Echo Left -> *GPIO13* -> (D7)
+ - Trig Center -> *GPIO15* -> (D8)
+ - Echo Center -> *GPIO3* -> (RX)
+ - Trig Right -> *GPIO9* -> (SD2)
+ - Echo Right -> *GPIO10* -> (SD3)
 
-```true``` - task enabled/disabled sucessfully
 
-```false``` - task was not enabled/disabled
+## Перший запуск
 
-| Param | Description | 
-| --- | --- |
-|  i  |  Task ID  |
+Перед першим запуском потрібно відкрити файл **off-robot.ino** та відредагувати наступні стрічки:
 
-###Enable / disable all tasks###
+```c
+const char* ssid = "YOUR_SSID"; //Назва Wi-Fi
+const char* password = "YOUR_PASSWD"; // Пароль
+```
+Після чого зберегти файл і прошити плату NodeMCU. Як це зробити написано **[тут](http://www.instructables.com/id/Programming-ESP8266-ESP-12E-NodeMCU-Using-Arduino-/)**.
 
-``` void enableAll() ```
+#### Building for source
+For production release:
+```sh
+$ gulp build --prod
+```
+Generating pre-built zip archives for distribution:
+```sh
+$ gulp build dist --prod
+```
+### Docker
+Dillinger is very easy to install and deploy in a Docker container.
 
-``` void disableAll() ```
+By default, the Docker will expose port 80, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.
 
-###TODO###
-* Task callback parameters support
-* ...
+```sh
+cd dillinger
+docker build -t joemccann/dillinger:${package.json.version}
+```
+This will create the dillinger image and pull in the necessary dependencies. Be sure to swap out `${package.json.version}` with the actual version of Dillinger.
+
+Once done, run the Docker image and map the port to whatever you wish on your host. In this example, we simply map port 8000 of the host to port 80 of the Docker (or whatever port was exposed in the Dockerfile):
+
+```sh
+docker run -d -p 8000:8080 --restart="always" <youruser>/dillinger:${package.json.version}
+```
+
+Verify the deployment by navigating to your server address in your preferred browser.
+
+```sh
+127.0.0.1:8000
+```
+
+#### Kubernetes + Google Cloud
+
+See [KUBERNETES.md](https://github.com/joemccann/dillinger/blob/master/KUBERNETES.md)
+
+
+### Todos
+
+ - Write MOAR Tests
+ - Add Night Mode
+
+License
+----
+
+MIT
+
+
+**Free Software, Hell Yeah!**
+
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+
+
+   [Roboton]: <https://bitbucket.org/Rainbow-MRX/off-robot/src//libs/Roboton/?at=master>
+   [Ticker]: <https://github.com/Toshik/TickerScheduler>
+
