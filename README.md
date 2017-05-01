@@ -28,9 +28,16 @@
 | ------ | ------ |
 | Ultrasonic-HC-SR04 | [JRodrigoTech/Ultrasonic-HC-SR04](https://github.com/JRodrigoTech/Ultrasonic-HC-SR04) |
 | Roboton | [libs/Roboton] [Roboton] |
-| TickerScheduler | | [libs/TickerScheduler] [Ticker] |
+| TickerScheduler | [libs/TickerScheduler] [Ticker] |
 
+> Бібліотеки потрібно встановлювати у папку
+> %UserDocuments%/Arduino/libraries
+> Детальніше про встановлення бібліотек можна прочитати [тут](http://arduino.ua/ru/guide/Libraries).
 
+З допомогою **Windows CMD** (Win+R ---> cmd ) це можна зробити наступним чином:
+```sh
+$ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
+```
 
 ## Схема підключення
 
