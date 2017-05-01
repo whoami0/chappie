@@ -39,6 +39,20 @@
 $ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
 ```
 
+##Використані елементи
+
+| Елемент | Кількість |
+| ------ | ------ |
+| NodeMCU 1.0 ESP-12E | 1 |
+| DC Motor | 2 | 
+| L293D | 1 |
+| LM317 | 2 |
+| HC-SR04 | 3 |
+| Батарея 9В | 1 |
+| Резистор 120 Ом | 2 |
+| Резистор 360 Ом | 2 |
+
+
 ## Схема підключення
 
 ![Схема підключення](https://bytebucket.org/Rainbow-MRX/off-robot/raw/77597cc638fb3b88a39a59cf9581fa18817b0bb5/fritzing-tpl/off-robot.png)
@@ -71,18 +85,6 @@ $ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
  - Trig Right -> *GPIO9* -> (SD2)
  - Echo Right -> *GPIO10* -> (SD3)
 
-Елементи використані у схемі:
-
-| Елемент | Кількість |
-| ------ | ------ |
-| NodeMCU 1.0 ESP-12E | 1 |
-| DC Motor | 2 | 
-| L293D | 1 |
-| LM317 | 2 |
-| HC-SR04 | 3 |
-| Батарея 9В | 1 |
-| Резистор 120 Ом | 2 |
-| Резистор 360 Ом | 2 |
 
 ## Перший запуск
 
