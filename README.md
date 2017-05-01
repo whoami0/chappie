@@ -1,8 +1,8 @@
-# Off-line Robot
+# Offline Robot
 
-[![NodeMCU](http://visystem.ddns.net:7442/imagenes/nodemcu-logos.png)](https://nodesource.com/products/nsolid)
+[![NodeMCU](http://docs.thinger.io/arduino/assets/nodemcu.png)](https://nodesource.com/products/nsolid)
 
-Мікроконтролерна система управління двигунами автономного робота на базі платформи NodeMCU 1.0 ESP-12E основою якої є мікроконтролер [ESP8266](https://ru.wikipedia.org/wiki/ESP8266)
+Мікроконтролерна система управління двигунами автономного робота на базі платформи NodeMCU 1.0 ESP-12E основою якої є мікроконтролер [ESP8266](https://ru.wikipedia.org/wiki/ESP8266).
 
 ## Можливості
 
@@ -10,11 +10,11 @@
   - Керування роботом через веб-інтерфейс по Wi-Fi.
 
 
-Проект розроблений в межах курсової роботи з комп'ютерних систем, автором якої є [Лящинський Петро](https://www.linkedin.com/in/rainbowmrx/), ст. гр. КСМ-32
+Проект розроблений в межах курсової роботи з комп'ютерних систем, автором якої є [Лящинський Петро](https://www.linkedin.com/in/rainbowmrx/), ст. гр. КСМ-32.
 
 ## Технології
 
-Для розробки Off-line Robot було використано наступні open-source проекти:
+Для розробки Offline Robot було використано наступні open-source проекти:
 
 * [Arduino IDE](https://www.arduino.cc/) - середовище розробки програм для Arduino і не тільки, на мові програмування, що є підмножиною [C/C++](https://uk.wikipedia.org/wiki/C%2B%2B)
 * [Fritzing](http://fritzing.org/home/) - програмне забезпечення з відкритим кодом для віртуального моделювання електричних кіл і схем та електронного обладнання
@@ -24,12 +24,34 @@
 
 Додаткові та власні бібліотеки, які використані для розробки проекту.
 
-| Lib | README |
+| LIBRARY | LINK |
 | ------ | ------ |
 | Ultrasonic-HC-SR04 | [JRodrigoTech/Ultrasonic-HC-SR04](https://github.com/JRodrigoTech/Ultrasonic-HC-SR04) |
-| Motor | [libs/motor/README.md] [PlGd] |
-| Roboton | [plugins/googledrive/README.md] [PlGd] |
+| Roboton | [libs/Roboton] [Roboton] |
+| TickerScheduler | [Toshik/TickerScheduler] [Ticker] |
 
+> Бібліотеки потрібно встановлювати у папку
+> **%UserDocuments%/Arduino/libraries**
+> Детальніше про встановлення бібліотек можна прочитати **[тут](http://arduino.ua/ru/guide/Libraries)**.
+
+З допомогою **Windows CMD** (Win+R ---> cmd ---> Enter ) це можна зробити наступним чином:
+```cmd
+$ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
+```
+
+## Використані елементи
+
+
+| Елемент | Кількість |
+| ------ | ------ |
+| NodeMCU 1.0 ESP-12E | 1 |
+| DC Motor | 2 | 
+| L293D | 1 |
+| LM317 | 2 |
+| HC-SR04 | 3 |
+| Батарея 9В | 1 |
+| Резистор 120 Ом | 2 |
+| Резистор 360 Ом | 2 |
 
 
 ## Схема підключення
@@ -64,26 +86,16 @@
  - Trig Right -> *GPIO9* -> (SD2)
  - Echo Right -> *GPIO10* -> (SD3)
 
-Елементи використані у схемі:
-
-   1. **NodeMCU 1.0 ESP-12E** - 1 шт.
-   2. **DC Motor** - 2 шт.
-   3. **L293D** - 1 шт.
-   4. **LM317** - 2 шт.
-   5. **HC-SR04** - 3 шт.
-   6. **Батарея 9В** - 1 шт.
-   7. **Резистор 120Ом** - 2 шт.
-   8. **Резистор 360Ом** - 2 шт.
 
 ## Перший запуск
 
 Перед першим запуском потрібно відкрити файл **off-robot.ino** та відредагувати наступні стрічки:
 
 ```c
-const char* ssid = "YOUR_SSID";
-const char* password = "YOUR_PASSWD";
+const char* ssid = "YOUR_SSID"; //Назва Wi-Fi
+const char* password = "YOUR_PASSWD"; // Пароль
 ```
-Після чого зберегти файл і прошити плату NodeMCU.
+Після чого зберегти файл і прошити плату NodeMCU. Як це зробити написано **[тут](http://www.instructables.com/id/Programming-ESP8266-ESP-12E-NodeMCU-Using-Arduino-/)**.
 
 #### Building for source
 For production release:
@@ -138,23 +150,6 @@ MIT
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
 
-   [dill]: <https://github.com/joemccann/dillinger>
-   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
-   [john gruber]: <http://daringfireball.net>
-   [df1]: <http://daringfireball.net/projects/markdown/>
-   [markdown-it]: <https://github.com/markdown-it/markdown-it>
-   [Ace Editor]: <http://ace.ajax.org>
-   [node.js]: <http://nodejs.org>
-   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
-   [jQuery]: <http://jquery.com>
-   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
-   [express]: <http://expressjs.com>
-   [AngularJS]: <http://angularjs.org>
-   [Gulp]: <http://gulpjs.com>
+   [Roboton]: <https://bitbucket.org/Rainbow-MRX/off-robot/src//libs/Roboton/?at=master>
+   [Ticker]: <https://github.com/Toshik/TickerScheduler>
 
-   [PlDb]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
-   [PlGh]: <https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md>
-   [PlGd]: <https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md>
-   [PlOd]: <https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md>
-   [PlMe]: <https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md>
-   [PlGa]: <https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md>
