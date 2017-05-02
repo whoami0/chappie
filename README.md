@@ -28,7 +28,7 @@
 | ------ | ------ |
 | Ultrasonic-HC-SR04 | [JRodrigoTech/Ultrasonic-HC-SR04](https://github.com/JRodrigoTech/Ultrasonic-HC-SR04) |
 | Roboton | [libs/Roboton] [Roboton] |
-| TickerScheduler | [Toshik/TickerScheduler] [Ticker] |
+| Ticker | [Arduino/Ticker] [Ticker] |
 
 > Бібліотеки потрібно встановлювати у папку
 > **%UserDocuments%/Arduino/libraries**
@@ -57,6 +57,9 @@ $ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
 ## Схема підключення
 
 ![Схема підключення](https://bytebucket.org/Rainbow-MRX/off-robot/raw/77597cc638fb3b88a39a59cf9581fa18817b0bb5/fritzing-tpl/off-robot.png)
+
+![Схема підключення](https://bytebucket.org/Rainbow-MRX/off-robot/raw/86b6cea0ffc14c7cf261693a145d6432b26df9be/fritzing-tpl/electrical.png)
+
 ***
 **Задній двигун**:
 
@@ -97,59 +100,12 @@ const char* password = "YOUR_PASSWD"; // Пароль
 ```
 Після чого зберегти файл і прошити плату NodeMCU. Як це зробити написано **[тут](http://www.instructables.com/id/Programming-ESP8266-ESP-12E-NodeMCU-Using-Arduino-/)**.
 
-#### Building for source
-For production release:
-```sh
-$ gulp build --prod
-```
-Generating pre-built zip archives for distribution:
-```sh
-$ gulp build dist --prod
-```
-### Docker
-Dillinger is very easy to install and deploy in a Docker container.
-
-By default, the Docker will expose port 80, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.
-
-```sh
-cd dillinger
-docker build -t joemccann/dillinger:${package.json.version}
-```
-This will create the dillinger image and pull in the necessary dependencies. Be sure to swap out `${package.json.version}` with the actual version of Dillinger.
-
-Once done, run the Docker image and map the port to whatever you wish on your host. In this example, we simply map port 8000 of the host to port 80 of the Docker (or whatever port was exposed in the Dockerfile):
-
-```sh
-docker run -d -p 8000:8080 --restart="always" <youruser>/dillinger:${package.json.version}
-```
-
-Verify the deployment by navigating to your server address in your preferred browser.
-
-```sh
-127.0.0.1:8000
-```
-
-#### Kubernetes + Google Cloud
-
-See [KUBERNETES.md](https://github.com/joemccann/dillinger/blob/master/KUBERNETES.md)
 
 
-### Todos
-
- - Write MOAR Tests
- - Add Night Mode
-
-License
-----
-
-MIT
-
-
-**Free Software, Hell Yeah!**
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
 
    [Roboton]: <https://bitbucket.org/Rainbow-MRX/off-robot/src//libs/Roboton/?at=master>
-   [Ticker]: <https://github.com/Toshik/TickerScheduler>
+   [Ticker]: <https://github.com/esp8266/Arduino/tree/master/libraries/Ticker>
 
