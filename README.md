@@ -35,7 +35,7 @@
 > Детальніше про встановлення бібліотек можна прочитати **[тут](http://arduino.ua/ru/guide/Libraries)**.
 
 З допомогою **Windows CMD** (Win+R ---> cmd ---> Enter ) це можна зробити наступним чином:
-```cmd
+```sh
 $ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
 ```
 
@@ -53,12 +53,16 @@ $ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
 | Резистор 120 Ом | 2 |
 | Резистор 360 Ом | 2 |
 
+Оскільки, плата NodeMCU може видати тільки **3.3 В**, а для живлення елементів потрібно **5 В** -- було **[розраховано](http://cxem.net/calc/lm317_calc.php)** стабілізатор на базі [LM317](http://www.ti.com/lit/ds/symlink/lm317.pdf). 
+
+![LM317 Voltage Regulator](http://cxem.net/calc_tmp/lm317calc/2b3686b7389d6545f0b080dad0a4a9bf.png)
+
 
 ## Схема підключення
 
-![Схема підключення](https://bytebucket.org/Rainbow-MRX/off-robot/raw/77597cc638fb3b88a39a59cf9581fa18817b0bb5/fritzing-tpl/off-robot.png)
+[![Схема підключення](https://lh5.googleusercontent.com/Q7YQS58gdiuNkvldB2yVRck6qRWg44OK6WZMNOIw-UajELiNn8dlPItrS-EX9_U_NmGVuoXtJk8uz6Q=w1024-h672-rw)](https://drive.google.com/file/d/0B6GGJ0EN8hsVNzBRTG9VN2Z3MUE/view)
 
-![Схема підключення](https://bytebucket.org/Rainbow-MRX/off-robot/raw/86b6cea0ffc14c7cf261693a145d6432b26df9be/fritzing-tpl/electrical.png)
+[![Схема підключення](https://lh5.googleusercontent.com/6i32c_gf-m2obBoMbNcFnyNjSiMVKIYOqCEmyM676TAhrZdvnpnYf_rlX9bitqSWCGJsEAY1h-OOchU=w1024-h672-rw)](https://drive.google.com/file/d/0B6GGJ0EN8hsVZGFOZHQ3Q2RZVkE/view)
 
 ***
 **Задній двигун**:
@@ -70,7 +74,7 @@ $ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
 
   - Out3
   - Out4
-***
+  
 **L293D:**
 
  - Input 1 -> *GPIO16* -> (D0)
@@ -79,7 +83,7 @@ $ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
  - Input 3 -> *GPIO2* -> (D4)
  - Input 4 -> *GPIO14* -> (D5)
  - Enable 2 -> *GPIO0* -> (D3)
-***
+
 **HC-SR04**:
 
  - Trig Left -> *GPIO12* -> (D6)
@@ -90,7 +94,7 @@ $ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
  - Echo Right -> *GPIO10* -> (SD3)
 
 
-## Перший запуск
+## Прошивка
 
 Перед першим запуском потрібно відкрити файл **off-robot.ino** та відредагувати наступні стрічки:
 
@@ -98,7 +102,7 @@ $ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
 const char* ssid = "YOUR_SSID"; //Назва Wi-Fi
 const char* password = "YOUR_PASSWD"; // Пароль
 ```
-Після чого зберегти файл і прошити плату NodeMCU. Як це зробити написано **[тут](http://www.instructables.com/id/Programming-ESP8266-ESP-12E-NodeMCU-Using-Arduino-/)**.
+Після чого зберегти файл і прошити плату NodeMCU. Як це зробити, а також як додати плату до Arduino IDE написано **[тут](http://www.instructables.com/id/Programming-ESP8266-ESP-12E-NodeMCU-Using-Arduino-/)**.
 
 
 
