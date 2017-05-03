@@ -2,7 +2,9 @@
 #include <Ultrasonic.h>
 #include <Ticker.h>
 #include <ESP8266WiFi.h>
+#include <WiFiClient.h>
 #include <ESP8266WebServer.h>
+#include <ESP8266mDNS.h>
 
 #define DISTANCE_RANGE 30
 #define SIZE_BUFF_D 3
@@ -20,7 +22,43 @@ uint8_t distance[SIZE_BUFF_D];
 uint16_t prevMillis = 0;
 uint16_t currentMillis = 0;
 
-String webPage = "";
+String webPage = "
+<style>
+a {
+  text-decoration: none;
+  font-size: 24px;
+}
+</style>
+<h1>Offline Robot</h1>
+<br>
+<button id=\"forward\"><a href=\"forward\">Forward</a></button>
+<button id=\"back\"><a href=\"back\">Back</a></button>
+<button id=\"right\"><a href=\"right\">Right</a></button>
+<button id=\"left\"><a href=\"left\">Left</a></button>
+<button id=\"stop\"><a href=\"stop\">Stop</a></button>
+<br>
+<br>
+<center><h6></h6></center>
+<script>
+var button = document.getElementsByTagName(\"button\");
+var h = document.querySelector(\"h6\"); 
+ for (var i = 0; i < button.length; i++)
+ {
+   (function(j){
+     button[j].addEventListener('click', function(e){
+      e.preventDefault(); 
+      var xhr = new XMLHttpRequest()
+      var url = button[j].id;
+      xhr.open('GET', \"'/' + url\", true);
+      xhr.onload = function(e){
+        h.innerHTML = xhr.responseText;
+      };
+      xhr.send();  
+     });
+   })(i);
+ }
+</script>
+";
 
 Ticker tc_d;
 Ticker tc_c;
@@ -44,28 +82,35 @@ void setup() {
     Serial.println(ssid);
     Serial.print("IP address: ");
     Serial.println(WiFi.localIP());
-
+    if (mdns.begin("esp8266", WiFi.localIP())) {
+        Serial.println("MDNS responder started");
+    }
     server.on("/", [](){
         server.send(200, "text/html", webPage);
         offline = false;
     });
     server.on("/forward", [](){
-        server.send(200, "text/html", webPage);
+        server.send(200, "text/html", "Robot is moving forward");
         robot.stop_mv(&MOTOR_FRWB);
         robot.forward();
     });
     server.on("/back", [](){
-        server.send(200, "text/html", webPage);
+        server.send(200, "text/html", "Robot is moving back");
         robot.stop_mv(&MOTOR_FRWB);
         robot.back();
     });
     server.on("/right", [](){
-        server.send(200, "text/html", webPage);
+        server.send(200, "text/html", "Robot is turning right");
         robot.right();
     });
     server.on("/left", [](){
-        server.send(200, "text/html", webPage);
+        server.send(200, "text/html", "Robot is turning left");
         robot.left();
+    });
+    server.on("/stop", [](){
+        server.send(200, "text/html", "Robot stops");
+        robot.stop_mv(&MOTOR_FRWB);
+        robot.stop_mv(&MOTOR_RGHL);
     });
     server.begin();
     Serial.println("HTTP server started");
@@ -112,15 +157,3 @@ void checkCenter() {
         }
     }
 }
-/**
-* var button = document.querySelector("button");
-  button.addEventListener("click", function(e){
-  e.preventDefault();
-  var xhr = new XMLHttpRequest()
-  xhr.open('GET', 'https://httpbin.org/get', true);
-  xhr.onload = function(e){
-    console.log( xhr.responseText );
-  };
-  xhr.send();  
-});
-**/
