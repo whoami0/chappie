@@ -22,42 +22,42 @@ uint8_t distance[SIZE_BUFF_D];
 uint16_t prevMillis = 0;
 uint16_t currentMillis = 0;
 
-String webPage = "
-<style>
-a {
-  text-decoration: none;
-  font-size: 24px;
-}
-</style>
-<h1>Offline Robot</h1>
-<br>
-<button id=\"forward\"><a href=\"forward\">Forward</a></button>
-<button id=\"back\"><a href=\"back\">Back</a></button>
-<button id=\"right\"><a href=\"right\">Right</a></button>
-<button id=\"left\"><a href=\"left\">Left</a></button>
-<button id=\"stop\"><a href=\"stop\">Stop</a></button>
-<br>
-<br>
-<center><h6></h6></center>
-<script>
-var button = document.getElementsByTagName(\"button\");
-var h = document.querySelector(\"h6\"); 
- for (var i = 0; i < button.length; i++)
- {
-   (function(j){
-     button[j].addEventListener('click', function(e){
-      e.preventDefault(); 
-      var xhr = new XMLHttpRequest()
-      var url = button[j].id;
-      xhr.open('GET', \"'/' + url\", true);
-      xhr.onload = function(e){
-        h.innerHTML = xhr.responseText;
-      };
-      xhr.send();  
-     });
-   })(i);
- }
-</script>
+String webPage = "\
+<style>\
+a {\
+  text-decoration: none;\
+  font-size: 24px;\
+}\
+</style>\
+<h1>Offline Robot</h1>\
+<br>\
+<button id=\"forward\"><a href=\"forward\">Forward</a></button>\
+<button id=\"back\"><a href=\"back\">Back</a></button>\
+<button id=\"right\"><a href=\"right\">Right</a></button>\
+<button id=\"left\"><a href=\"left\">Left</a></button>\
+<button id=\"stop\"><a href=\"stop\">Stop</a></button>\
+<br>\
+<br>\
+<center><h6></h6></center>\
+<script>\
+var button = document.getElementsByTagName(\"button\");\
+var h = document.querySelector(\"h6\");\
+ for (var i = 0; i < button.length; i++)\
+ {\
+   (function(j){\
+     button[j].addEventListener('click', function(e){\
+      e.preventDefault();\ 
+      var xhr = new XMLHttpRequest();\
+      var url = button[j].id;\
+      xhr.open('GET', \"'/' + url\", true);\
+      xhr.onload = function(e){\
+        h.innerHTML = xhr.responseText;\
+      };\
+      xhr.send();\  
+     });\
+   })(i);\
+ }\
+</script>\
 ";
 
 Ticker tc_d;
@@ -68,6 +68,7 @@ const char* ssid = "YOUR_SSID";
 const char* password = "YOUR_PASSWD";
 
 ESP8266WebServer server(80);
+MDNSResponder mdns;
 
 void setup() {
     tc_d.attach_ms(12, getDistance);
