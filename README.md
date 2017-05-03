@@ -94,6 +94,9 @@ $ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
  - Echo Right -> *GPIO10* -> (SD3)
 
 
+
+[![Model](https://lh3.googleusercontent.com/A9FRU1Kyi-E2yTBnxvFngrEvaBimMuuv-oTRBbPDGcfErcJTEAfDUKHJDLZM3Atmx3wQoQIubriy_B0=w1024-h672-rw)](https://drive.google.com/file/d/0B6GGJ0EN8hsVOHpucU82UTZmeEU/view?usp=sharing)
+
 ## Прошивка
 
 Перед першим запуском потрібно відкрити файл **off-robot.ino** та відредагувати наступні стрічки:
