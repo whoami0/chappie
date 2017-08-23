@@ -116,3 +116,7 @@ After that, save the file and flash the NodeMCU. How to do that, as well as how 
    [Roboton]: <https://github.com/liashchynskyi/chappie/tree/master/libs/Roboton>
    [Ticker]: <https://github.com/esp8266/Arduino/tree/master/libraries/Ticker>
 
+
+# License
+
+This project is licensed under the GPL-3.0. For more see **LICENSE** file.
