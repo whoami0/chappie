@@ -4,7 +4,7 @@
 
 Microcontroller autonomous robot engine management system based on the platform NodeMCU 1.0 ESP-12E (based on the microcontroller [ESP8266](https://ru.wikipedia.org/wiki/ESP8266)).
 
-## Opportunities
+## Features
 
   - Bypass obstacles by yourself;  
   - Manage the robot through the web interface over Wi-Fi.
