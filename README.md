@@ -16,7 +16,7 @@ The project is designed as a problem of course work on computer systems, the aut
 
 The following open-source libraries were used to develop the project:
 
-* [Arduino IDE](https://www.arduino.cc/) - The open-source Arduino Software (IDE) makes it easy to write code and upload it to the board. It runs on Windows, Mac OS X, and Linux.(https://uk.wikipedia.org/wiki/C%2B%2B)
+* [Arduino IDE](https://www.arduino.cc/) - The open-source Arduino Software (IDE) makes it easy to write code and upload it to the board. It runs on Windows, Mac OS X, and Linux.
 * [Fritzing](http://fritzing.org/home/) - Open source software for virtual simulation of electric circuits and electronic equipment.
 * [NodeMCU](https://github.com/nodemcu/nodemcu-firmware) - Open [IoT](https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82_%D0%B2%D0%B5%D1%89%D0%B5%D0%B9) platform. 
 
