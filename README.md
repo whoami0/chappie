@@ -49,9 +49,9 @@ $ xcopy Path:\To\Project\Libs\Directory Documents\Arduino\libraries /S
 | L293D | 1 |
 | LM317 | 2 |
 | HC-SR04 | 3 |
-| Батарея 9В | 1 |
-| Резистор 120 Ом | 2 |
-| Резистор 360 Ом | 2 |
+| Battery 9V | 1 |
+| Resistor 120 Оhm | 2 |
+| Resistor 360 Оhm | 2 |
 
 Since the NodeMCU can supply voltage only **3.3 volts**, and to power the electrical components requires **5 volts** -- then I **[calculated](http://cxem.net/calc/lm317_calc.php)** the voltage regulator based on [LM317](http://www.ti.com/lit/ds/symlink/lm317.pdf). 
 
